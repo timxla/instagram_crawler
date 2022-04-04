@@ -4,11 +4,6 @@ from pathlib import Path
 from datetime import date
 from const import DATE_XPATH, ID_CSS, RIGHT_ARROW
 
-# def read_json(json_path):
-#     with open(json_path, 'r') as f:
-#         data = json.load(f)
-    
-#     return data
 
 def json_crawler(driver, query, post_count):
     
@@ -20,7 +15,7 @@ def json_crawler(driver, query, post_count):
 
         post_data[query] = []
 
-        while (curr <= 3):
+        while (curr <= post_count):
 
             time.sleep(3)
             img_route = './data/images/' + today + '/' + query + str(curr+1) + '.jpg'
@@ -43,6 +38,7 @@ def json_crawler(driver, query, post_count):
     except Exception as e:
         print("Error while processing json..")
         print(e)
+
 
 def save_json(post_data, query):
     

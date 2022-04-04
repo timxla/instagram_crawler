@@ -20,6 +20,7 @@ def make_chrome_driver(driver_path):
 
     return driver
 
+
 def login(driver):
     flag = False
     driver.get(LOGIN_URL)
@@ -44,6 +45,7 @@ def login(driver):
 
     return flag
 
+
 def search(driver, query):
     flag = False
 
@@ -66,6 +68,7 @@ def search(driver, query):
     
     return flag 
 
+# Need to click the first photo in order to target id, date
 def first_img_click(driver):
     flag = False
 
@@ -80,9 +83,11 @@ def first_img_click(driver):
     
     return flag
 
+# After crawling img files, scroll to top to click on the first post
 def scroll_to_top(driver):
     driver.find_element_by_tag_name('body').send_keys(Keys.HOME);
     time.sleep(5)
+
 
 
 def crawler():
@@ -102,9 +107,9 @@ def crawler():
             if is_search_success:
                 imgList = img_crawler(driver, IMG_COUNT)
                 save_img(imgList, query)
-            scroll_to_top(driver)
 
             # Metadata crawler
+            scroll_to_top(driver)
             is_first_img_click_success = first_img_click(driver)
             if is_first_img_click_success:
                 json_crawler(driver, query, IMG_COUNT)
