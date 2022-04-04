@@ -1,0 +1,24 @@
+{
+  "#봄코디": [
+    {
+      "dir": "./data/images/2022-03-31/#봄코디1.jpg",
+      "date": "Mar 31, 2022",
+      "id": "gentle_baek"
+    },
+    {
+      "dir": "./data/images/2022-03-31/#봄코디2.jpg",
+      "date": "Mar 31, 2022",
+      "id": "colorny"
+    },
+    {
+      "dir": "./data/images/2022-03-31/#봄코디3.jpg",
+      "date": "Mar 30, 2022",
+      "id": "jelly_woni"
+    },
+    {
+      "dir": "./data/images/2022-03-31/#봄코디4.jpg",
+      "date": "Mar 31, 2022",
+      "id": "foggyday_l"
+    }
+  ]
+}

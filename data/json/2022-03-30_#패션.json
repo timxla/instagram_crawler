@@ -1,0 +1,24 @@
+{
+  "#패션": [
+    {
+      "dir": "./data/images/2022-03-30/#패션1.jpg",
+      "date": "Mar 30, 2022",
+      "id": "s0_0_ar"
+    },
+    {
+      "dir": "./data/images/2022-03-30/#패션2.jpg",
+      "date": "Mar 30, 2022",
+      "id": "nene_riamu"
+    },
+    {
+      "dir": "./data/images/2022-03-30/#패션3.jpg",
+      "date": "Mar 30, 2022",
+      "id": "hi_hyojin___"
+    },
+    {
+      "dir": "./data/images/2022-03-30/#패션4.jpg",
+      "date": "Mar 30, 2022",
+      "id": "bejoon0"
+    }
+  ]
+}
