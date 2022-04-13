@@ -21,11 +21,13 @@ def json_crawler(driver, query, post_count):
             img_route = './data/images/' + today + '/' + query + str(curr+1) + '.jpg'
             post_date = driver.find_element_by_xpath(DATE_XPATH).get_attribute("title")
             post_id = driver.find_element_by_css_selector(ID_CSS).get_attribute("text")
+            curr_url = driver.current_url
 
             post_details = {
                 'dir' : img_route,
                 'date' : post_date,
-                'id' : post_id
+                'id' : post_id,
+                'url' : curr_url,
             }
         
             post_data[query].append(post_details) 

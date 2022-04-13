@@ -108,7 +108,7 @@ def crawler():
                 imgList = img_crawler(driver, IMG_COUNT)
                 save_img(imgList, query)
 
-            # Metadata crawler
+            # Data crawler
             scroll_to_top(driver)
             is_first_img_click_success = first_img_click(driver)
             if is_first_img_click_success:
