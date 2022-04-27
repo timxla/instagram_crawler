@@ -2,15 +2,22 @@ import time
 import json
 from pathlib import Path
 from datetime import date
+from pymongo import MongoClient
+from pymongo.server_api import ServerApi
 from const import DATE_XPATH, ID_CSS, RIGHT_ARROW
+from conf import INSTA_PASSWORD, INSTA_USERNAME
 
 
 def json_crawler(driver, query, post_count):
     
     post_data = {}
+    today = str(date.today())
+
+    client = MongoClient("mongodb+srv://findimage123:findimagecapstone@findimage.qp8zm.mongodb.net/findimage?retryWrites=true&w=majority", server_api=ServerApi('1'))
+    db = client[today]
+    collection = db[query]
 
     try:
-        today = str(date.today())
         curr = 0
 
         post_data[query] = []
@@ -29,6 +36,8 @@ def json_crawler(driver, query, post_count):
                 'id' : post_id,
                 'url' : curr_url,
             }
+
+            collection.insert_one(post_details)
         
             post_data[query].append(post_details) 
             curr += 1
