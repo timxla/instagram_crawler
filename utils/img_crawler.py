@@ -14,7 +14,8 @@ def img_crawler(driver, post_count):
         time.sleep(3)
 
         imgList = []
-        while (len(imgList) <= post_count):
+
+        while(len(imgList) <= post_count):
             posts = soup.select(IMG_CSS)
             time.sleep(5)
             for post in posts:

@@ -93,6 +93,7 @@ def scroll_to_top(driver):
 def crawler():
     is_login_success = False 
     driver = make_chrome_driver(DRIVER_PATH)
+    time.sleep(5)
 
     if driver is not None:
         is_login_success = login(driver)
