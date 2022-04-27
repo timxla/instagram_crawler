@@ -46,28 +46,6 @@ def login(driver):
     return flag
 
 
-def search(driver, query):
-    flag = False
-
-    try:
-        searchbox_el = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, SEARCH_XPATH)))
-        searchbox_el.clear()
-
-        searchbox_el.send_keys(query)
-
-        time.sleep(3)
-        searchbox_el.send_keys(Keys.ENTER)
-        time.sleep(5)
-        searchbox_el.send_keys(Keys.ENTER)
-        time.sleep(5)
-        flag = True
-
-    except:
-        print("Search failed")
-        flag = False
-    
-    return flag 
-
 # Need to click the first photo in order to target id, date
 def first_img_click(driver):
     flag = False
@@ -101,13 +79,13 @@ def crawler():
     if is_login_success:
         # KEYWORDS = ["#query1", "#query2"...]
         for query in KEYWORDS:
-            is_search_success, is_first_img_click_success = False, False
-            is_search_success = search(driver, query)
+            is_first_img_click_success = False
 
             # Image crawler
-            if is_search_success:
-                imgList = img_crawler(driver, IMG_COUNT)
-                save_img(imgList, query)
+            driver.get("https://instagram.com/explore/tags/" + query + "/")
+            time.sleep(5)
+            imgList = img_crawler(driver, IMG_COUNT)
+            save_img(imgList, query)
 
             # Data crawler
             scroll_to_top(driver)
