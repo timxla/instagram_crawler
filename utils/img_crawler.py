@@ -11,21 +11,24 @@ def img_crawler(driver, post_count):
     try:
         html = driver.page_source
         soup = BeautifulSoup(html, "html.parser")
-        time.sleep(3)
 
         imgList = []
 
         while(len(imgList) <= post_count):
             posts = soup.select(IMG_CSS)
-            time.sleep(5)
             for post in posts:
                 imgUrl = post.select_one('.KL4Bh').img['src']
                 imgList.append(imgUrl)
                 imgList = list(set(imgList))
-                html = driver.page_source
-                soup = BeautifulSoup(html)        
+
             driver.execute_script(SCROLL_SCRIPT)
-            time.sleep(3)
+            time.sleep(2)
+            driver.execute_script(SCROLL_SCRIPT)
+            time.sleep(2)
+            driver.execute_script(SCROLL_SCRIPT)
+            time.sleep(2)
+            html = driver.page_source
+            soup = BeautifulSoup(html, "html.parser")        
         
         imgList = imgList[:post_count]
         return imgList

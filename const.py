@@ -7,7 +7,7 @@ LOGIN_URL = "https://www.instagram.com/accounts/login/"
 KEYWORDS = ["봄코디", "패션"]
 
 #How many images to save per keyword
-IMG_COUNT = 50
+IMG_COUNT = 5
 
 #CSS
 FIRST_POST = "div.v1Nh3.kIKUG._bz0w"
