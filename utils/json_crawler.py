@@ -14,7 +14,9 @@ def json_crawler(driver, query, post_count):
     post_data = {}
     today = str(date.today())
 
-    client = MongoClient("mongodb+srv://findimage123:findimagecapstone@findimage.qp8zm.mongodb.net/findimage?retryWrites=true&w=majority", server_api=ServerApi('1'))
+    client = MongoClient("mongodb+srv://findimage123:findimagecapstone@cluster0.p7r2e.mongodb.net/Cluster0?retryWrites=true&w=majority", server_api=ServerApi('1'))
+
+    #Create db /today(date)/query(keyword)/
     db = client[today]
     collection = db[query]
 
@@ -56,10 +58,10 @@ def save_json(post_data, query):
     try:
         today = str(date.today())
         filename = './data/json/' + today + '_' + query + '.json'
-        file = json_util.dumps(post_data)
+        file = json_util.dumps(post_data, ensure_ascii=False, indent=4)
 
-        with open(filename, 'w+') as f:
-            json.dump(file, f, indent=2, ensure_ascii=False)
+        with open(filename, 'w') as f:
+            f.write(file)
     
     except Exception as e:
         print("Error while saving json file..")
