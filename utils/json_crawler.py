@@ -15,7 +15,7 @@ def json_crawler(driver, query, post_count):
     post_data = {}
     today = str(date.today()) 
 
-    client = MongoClient("mongodb+srv://findimage123:findimagecapstone@cluster0.p7r2e.mongodb.net/Cluster0?retryWrites=true&w=majority", server_api=ServerApi('1'))
+    client = MongoClient("", server_api=ServerApi('1'))
     db = client["Instagram"]
     collection = db["posts"]
 
