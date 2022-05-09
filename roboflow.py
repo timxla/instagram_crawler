@@ -5,7 +5,7 @@ from PIL import Image
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
 # Load Image with PIL
-img = cv2.imread("./data/images/2022-04-30/봄코디1.jpg")
+img = cv2.imread("./data/images/2022-04-30/test6.jpg")
 image = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 pilImage = Image.fromarray(image)
 

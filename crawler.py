@@ -1,22 +1,24 @@
 # Instagram Crawler
 import time
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from conf import INSTA_PASSWORD, INSTA_USERNAME
-from const import LOGIN_URL, KEYWORDS, IMG_COUNT, SEARCH_XPATH, FIRST_POST, DRIVER_PATH
+from const import LOGIN_URL, KEYWORDS, IMG_COUNT, SEARCH_XPATH, FIRST_POST
 from utils.img_crawler import img_crawler, save_img
 from utils.json_crawler import json_crawler
 
-def make_chrome_driver(driver_path):
+def make_chrome_driver():
     driver = None
 
     try:
-        driver = webdriver.Chrome(driver_path) 
-    except:
+        driver = webdriver.Chrome(ChromeDriverManager().install()) 
+    except Exception as e:
         print("Problem when initiating driver.")
+        print(e)
 
     return driver
 
@@ -70,25 +72,27 @@ def scroll_to_top(driver):
 
 def crawler():
     is_login_success = False 
-    driver = make_chrome_driver(DRIVER_PATH)
+    driver = make_chrome_driver()
     time.sleep(5)
 
     if driver is not None:
         is_login_success = login(driver)
 
     if is_login_success:
-        # KEYWORDS = ["#query1", "#query2"...]
         for query in KEYWORDS:
             is_first_img_click_success = False
 
             # Image crawler
             driver.get("https://instagram.com/explore/tags/" + query + "/")
             time.sleep(5)
-            imgList = img_crawler(driver, IMG_COUNT)
-            save_img(imgList, query)
 
-            # Data crawler
-            scroll_to_top(driver)
+            """
+            To save images locally, uncomment the lines below
+            """
+            #imgList = img_crawler(driver, IMG_COUNT)
+            #save_img(imgList, query)
+            #scroll_to_top(driver)
+
             is_first_img_click_success = first_img_click(driver)
             if is_first_img_click_success:
                 json_crawler(driver, query, IMG_COUNT)
