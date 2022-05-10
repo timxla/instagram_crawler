@@ -4,10 +4,9 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from conf import INSTA_PASSWORD, INSTA_USERNAME
-from const import LOGIN_URL, KEYWORDS, IMG_COUNT, SEARCH_XPATH, FIRST_POST
+from const import LOGIN_URL, KEYWORDS, IMG_COUNT, FIRST_POST
 from utils.img_crawler import img_crawler, save_img
 from utils.json_crawler import json_crawler
 

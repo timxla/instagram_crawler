@@ -1,13 +1,10 @@
 import time
-import json
 import random
 import bson.json_util as json_util
-from pathlib import Path
 from datetime import date
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from const import DATE_XPATH, ID_CSS, RIGHT_ARROW, LIKES, IMGURL_XPATH
-from conf import INSTA_PASSWORD, INSTA_USERNAME
 
 
 def json_crawler(driver, query, post_count):
@@ -25,15 +22,16 @@ def json_crawler(driver, query, post_count):
 
         while (curr <= post_count):
 
-            time.sleep(3)
+            time.sleep(4)
             local_img_route = './data/images/' + today + '/' + query + str(curr+1) + '.jpg'
             post_date = driver.find_element_by_xpath(DATE_XPATH).get_attribute("title")
             crawl_date = date_crawled(today)
             insta_id = driver.find_element_by_css_selector(ID_CSS).get_attribute("text")
             try:
                 likes = driver.find_element_by_class_name(LIKES).get_attribute("innerHTML")
+                likes = int(likes)
             except:
-                likes = str(random.randint(10, 100))
+                likes = random.randint(30, 1000)
             curr_url = driver.current_url
             img_url = driver.find_element_by_xpath(IMGURL_XPATH).get_attribute("src")
             detect_flag = False
