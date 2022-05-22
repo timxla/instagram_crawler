@@ -54,7 +54,7 @@ def json_crawler(driver, query, post_count):
 
             post_data["posts"].append(post_details) 
             imgurl_list.append(img_url)
-            # collection.insert_one(post_details) 
+            collection.insert_one(post_details) 
             curr += 1
 
             driver.find_element_by_css_selector(RIGHT_ARROW).click()
