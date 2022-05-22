@@ -4,7 +4,7 @@ BASE_URL = "https://www.instagram.com/explore/tags/"
 LOGIN_URL = "https://www.instagram.com/accounts/login/"
 
 #To_search
-KEYWORDS = ["봄코디", "패션", "ootd"]
+KEYWORDS = ["봄코디"]
 
 #How many images to save per keyword
 IMG_COUNT = 6

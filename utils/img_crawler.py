@@ -50,6 +50,7 @@ def save_img(imgList, query):
             local_file = open('./data/images/' + today + '/' + query + str(i+1) + '.jpg', 'wb')
             resp.raw.decode_content = True
             shutil.copyfileobj(resp.raw, local_file)
+            print("saved one img")
             del resp
     
     except Exception as e:
