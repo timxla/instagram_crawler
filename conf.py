@@ -1,2 +1,2 @@
-INSTA_USERNAME = "findimage123"
-INSTA_PASSWORD = "findimagecapstone"
+INSTA_USERNAME = ""
+INSTA_PASSWORD = ""
